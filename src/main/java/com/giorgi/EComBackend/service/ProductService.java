@@ -17,10 +17,12 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
-    }
+    public Product saveProduct(Product product) {return productRepository.save(product);}
+
     public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
+
+    public void deleteProduct(long id) {productRepository.deleteById(id);}
+
 }

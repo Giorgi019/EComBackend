@@ -1,6 +1,5 @@
 package com.giorgi.EComBackend.controller;
 
-
 import com.giorgi.EComBackend.model.Product;
 import com.giorgi.EComBackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ public class ProductController {
         Product savedProduct = productService.saveProduct(product);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
-
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Optional<Product> product = productService.getProductById(id);
@@ -37,6 +35,11 @@ public class ProductController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @DeleteMapping("/prdoucts{id}")
+    public ResponseEntity<void> deleteProduct(@PathVariable long id){
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
