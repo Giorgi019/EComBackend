@@ -1,16 +1,15 @@
 package com.giorgi.EComBackend.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +18,11 @@ public class Product {
     private String description;
     private BigDecimal price;
     private int stockQuantity;
+
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+
 }
