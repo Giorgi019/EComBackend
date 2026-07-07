@@ -4,6 +4,7 @@ import com.giorgi.EComBackend.model.Product;
 import com.giorgi.EComBackend.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,14 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.findAll();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public ResponseEntity<Page<Product>> getAllProducts(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Page<Product> productPage = productService.findAllPagianated(page, size);
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
     }
+
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product savedProduct = productService.saveProduct(product);
