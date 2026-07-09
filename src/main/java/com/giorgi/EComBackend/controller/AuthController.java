@@ -31,9 +31,7 @@ public class AuthController {
         String email = loginRequest.get("email");
         String password = loginRequest.get("password");
 
-        Optional<User> userOptional = userRepository.findAll().stream()
-                .filter(u -> u.email.equals(email))
-                .findFirst();
+        Optional<User> userOptional = userRepository.findByEmail(email);
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
