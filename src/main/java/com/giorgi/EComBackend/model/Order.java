@@ -19,7 +19,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "შელვეთის სტატუსი სავალდებულოა (მაგ: PENDING,COMPLETED)")
+    @NotBlank(message = "შეკვეთის სტატუსი სავალდებულოა (მაგ: PENDING,COMPLETED)")
     private String status;
 
     @NotNull(message = "საბოლოო თანხა სავალდებულოა")
