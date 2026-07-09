@@ -27,6 +27,8 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
+    public List<Product> searchProductByName(String name){return productRepository.findByNameContainingIgnoreCase(name);}
+
     public Product saveProduct(Product product) {return productRepository.save(product);}
 
     public Optional<Product> getProductById(Long id) {return productRepository.findById(id);}

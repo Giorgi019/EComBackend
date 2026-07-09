@@ -57,4 +57,10 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String name){
+        List<Product> products = productService.searchProductByName(name);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
