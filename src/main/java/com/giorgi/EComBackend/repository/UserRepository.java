@@ -1,10 +1,10 @@
 package com.giorgi.EComBackend.repository;
 
-import com.giorgi.EComBackend.model.Product;
+import com.giorgi.EComBackend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
 }
